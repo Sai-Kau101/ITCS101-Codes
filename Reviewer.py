@@ -40,7 +40,8 @@ if age >= 21 and years >= 2.0 and has_defaults == False:
             print("No Surcharge")
 
     elif credit <= 620 and credit < 720:
-        max_loan = 1.5 * revenue
+        max_loan = revenue * 1.5
+        print("Maximum Loan: ", max_loan)
         if years >= 5.0:
             base_fee = max_loan * 0.2
             print("Base Processing fee: ", base_fee)
