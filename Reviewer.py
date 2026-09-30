@@ -14,7 +14,7 @@ base_fee = 0
 #Baseline
 
 if age >= 21 and years >= 2.0 and has_defaults == False:
-    print("ACCEPTED: Passed Baseline Requirements")
+    print("CONTINUE: Passed Baseline Requirements")
     if credit >= 720:
         max_loan = revenue * 3
         print("Maximum Loan: ",max_loan)
@@ -28,7 +28,7 @@ if age >= 21 and years >= 2.0 and has_defaults == False:
         # Collateral
 
         if col_val >= max_loan:
-            print("ACCEPTED: Sufficient Collateral value for ", col_name)
+            print("CONTINUE: Sufficient Collateral value for ", col_name)
         else:
             print("REJECTED: Insufficient Collateral value for ", col_name)
 
@@ -39,16 +39,17 @@ if age >= 21 and years >= 2.0 and has_defaults == False:
         else:
             print("No Surcharge")
 
-    elif credit <= 620 and credit < 720:
-        max_loan = revenue * 1.5
-        print("Maximum Loan: ", max_loan)
+    elif credit >= 620 and credit < 720:
+        max_loan = 1.5 * revenue
         if years >= 5.0:
             base_fee = max_loan * 0.2
             print("Base Processing fee: ", base_fee)
         else:
             base_fee = max_loan * 0.035
             print("Base Processing fee: ", base_fee)
+    elif credit < 620:
+        print("REJECTED: Low Credit Score")
     else:
-        ("INVALID")
+        print("INVALID")
 else:
     print("REJECTED: High Risk Application or Ineligible Owner")
